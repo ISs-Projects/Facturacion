@@ -6,11 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.entidades.Cliente;
 import modelo.entidades.ClienteImpl;
 import modelo.entidades.Factura;
 import modelo.entidades.FacturaImpl;
 import modelo.persistencia.FacturaDAO;
+import modelo.persistencia.GenericDAO;
 
 /**
  *
@@ -18,8 +21,9 @@ import modelo.persistencia.FacturaDAO;
  */
 public class FacturaDAOJDBC implements FacturaDAO {
 
+    @Override
     public List<Factura> listByCliente(String dni) {
-        List<Factura> facturas = new ArrayList<Factura>();
+        List<Factura> facturas = new ArrayList<>();
 
         try {
             Statement stmt = Persistencia.createConnection().createStatement();
@@ -41,6 +45,8 @@ public class FacturaDAOJDBC implements FacturaDAO {
 
         } catch (SQLException e) {
             System.out.println(e);
+        } catch (Exception ex) {
+            Logger.getLogger(FacturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Persistencia.closeConnection();
         }
@@ -59,6 +65,8 @@ public class FacturaDAOJDBC implements FacturaDAO {
 
         } catch (SQLException e) {
             System.out.println(e);
+        } catch (Exception ex) {
+            Logger.getLogger(FacturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Persistencia.closeConnection();
         }
@@ -83,6 +91,8 @@ public class FacturaDAOJDBC implements FacturaDAO {
 
         } catch (SQLException e) {
             System.out.println(e);
+        } catch (Exception ex) {
+            Logger.getLogger(FacturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Persistencia.closeConnection();
         }
@@ -102,6 +112,8 @@ public class FacturaDAOJDBC implements FacturaDAO {
 
         } catch (SQLException e) {
             System.out.println(e);
+        } catch (Exception ex) {
+            Logger.getLogger(FacturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Persistencia.closeConnection();
         }
@@ -116,6 +128,8 @@ public class FacturaDAOJDBC implements FacturaDAO {
 
         } catch (SQLException e) {
             System.out.println(e);
+        } catch (Exception ex) {
+            Logger.getLogger(FacturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Persistencia.closeConnection();
         }
@@ -144,6 +158,8 @@ public class FacturaDAOJDBC implements FacturaDAO {
 
         } catch (SQLException e) {
             System.out.println(e);
+        } catch (Exception ex) {
+            Logger.getLogger(FacturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Persistencia.closeConnection();
         }

@@ -1,8 +1,10 @@
 package modelo.persistencia.JDBC;
 
+import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,11 +19,28 @@ public class Persistencia {
     private static String password = "";
 //    
 
-    private static String url = "jdbc:mysql://localhost:3306/facturacion?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
+    private static String url = "jdbc:mysql://localhost:8889/facturacion?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
 
 
-    public static Connection createConnection() {
+    public static Connection createConnection() throws Exception {
+    
+        String login = "root";
+	String password = "root";
+	Connection conn = null;
+	try {
+	    Class.forName("com.mysql.cj.jdbc.Driver");
+	    conn = DriverManager.getConnection(url, login, password);
+	    if (conn == null) {
+                throw new Exception("Can not connnect to DAtabase");
+	    }
 
+	} catch (SQLException ex) {
+	    System.out.println(ex);
+        } catch (ConnectException ex) {
+            System.out.println(ex.getCause());
+	} catch (ClassNotFoundException ex) {
+	}
+        return conn;
 
     }
 

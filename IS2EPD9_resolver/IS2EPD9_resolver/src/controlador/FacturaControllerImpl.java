@@ -65,7 +65,7 @@ public class FacturaControllerImpl implements FacturaController {
 
     @Override
     public void nuevaFacturaGesture(String id, Cliente cliente, String importe) {
-        Factura factura = new FacturaImpl(id, cliente, new Double((String)importe));
+        Factura factura = new FacturaImpl(id, cliente, Double.valueOf(importe));
         this.model.nuevaFactura(factura);
     }
 
@@ -77,7 +77,7 @@ public class FacturaControllerImpl implements FacturaController {
 
     @Override
     public void actualizaFacturaGesture(String id, Cliente cliente, String importe) {
-        Factura factura = new FacturaImpl(id, cliente, new Double((String)importe));
+        Factura factura = new FacturaImpl(id, cliente, Double.valueOf(importe));
         this.model.actualizarFactura(factura);
     }
     

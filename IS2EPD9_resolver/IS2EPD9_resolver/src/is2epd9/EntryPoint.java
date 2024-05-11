@@ -33,6 +33,7 @@ public class EntryPoint {
         ClienteController clienteController = new ClienteControllerImpl();
         
         clienteController.setup(clienteModel, clienteViews);
+        clienteView1.setController(clienteController);
 
 
         //Factura

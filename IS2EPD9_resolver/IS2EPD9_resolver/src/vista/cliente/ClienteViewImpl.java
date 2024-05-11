@@ -17,10 +17,16 @@ public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
     private ClienteViewImplInternal panelCliente;
 
     /** Creates new form ClienteViewImpl */
+    /** Creates new form ClienteViewImpl */
     public ClienteViewImpl() {
+        //tableModel = new ClienteTableAndComboModel();
+        tableModel = ClienteTableAndComboModel.create();
+        initComponents();
 
+        this.panelCliente = new ClienteViewImplInternal(this);
+        this.jPanelCliente.add(this.panelCliente);
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -78,6 +84,31 @@ public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
 
 
 
+    protected void fireNuevoClienteGesture(String DNI, String nombre, String direccion) {
+        getController().nuevoClienteGesture(DNI, nombre, direccion);
+    }
+
+    protected void fireActualizaClienteGesture(String DNI, String nombre, String direccion) {
+        getController().actualizaClienteGesture(DNI, nombre, direccion);
+    }
+
+    protected void fireBorraClienteGesture(String DNI) {
+        getController().borraClienteGesture(DNI);
+    }
+
+    public ClienteController getController() {
+        return controller;
+    }
+
+    public void setController(ClienteController controller) {
+        this.controller=controller;
+    }
+
+    public void dataModelChanged() {
+        //cambia el modelo de JTable(TableModel) por medio de una clase que hemos creado (ClientesTableModel)
+        tableModel.setClientes(getController().listaClientesGesture());
+    }
+
     public void display(){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -87,4 +118,5 @@ public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
         });
 
     }
+    
 }
