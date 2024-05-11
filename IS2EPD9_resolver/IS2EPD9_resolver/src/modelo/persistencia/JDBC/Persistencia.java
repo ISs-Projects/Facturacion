@@ -15,17 +15,17 @@ import java.util.logging.Logger;
 public class Persistencia {
 
     // XAMPP
-    private static String login = "root";
+    private static String login = "";
     private static String password = "";
 //    
 
-    private static String url = "jdbc:mysql://localhost:8889/facturacion?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
+    private static String url = "jdbc:mysql://localhost:3306/facturacion?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
 
 
     public static Connection createConnection() throws Exception {
     
-        String login = "root";
-	String password = "root";
+        String login = "phpmyadmin";
+	String password = "developer";
 	Connection conn = null;
 	try {
 	    Class.forName("com.mysql.cj.jdbc.Driver");
