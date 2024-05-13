@@ -1,44 +1,54 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package modelo.entidades;
 
 /**
  *
- * @author IS2: Norberto Díaz-Díaz
+ * @author Norberto Díaz-Díaz
  */
 public class FacturaImpl implements Factura {
-
-    private String identificador;
+    private String identifiador;
     private Cliente cliente;
     private Double importe;
-
-    public FacturaImpl(String identifiador, Cliente cliente, Double importe) {
-        this.identificador = identifiador;
-        this.cliente = cliente;
-        this.importe = importe;
-    }
 
     public FacturaImpl(String identificador) {
         this(identificador,null,null);
     }
 
-    @Override
-    public String getIdentificador() {
-        return this.identificador;
+
+    public FacturaImpl(String identifiador, Cliente cliente) {
+        this(identifiador,cliente,null);
     }
 
-    @Override
+    public FacturaImpl(String identifiador, Cliente cliente, Double importe) {
+        this.identifiador = identifiador;
+        this.cliente = cliente;
+        this.importe = importe;
+    }
+
+
     public Cliente getCliente() {
-        return this.cliente;
+        return cliente;
     }
 
-    @Override
+    public String getIdentificador() {
+        return identifiador;
+    }
+
     public Double getImporte() {
-        return this.importe;
+        return importe;
     }
 
-    @Override
-    public void setIdentificador(String id) {
-        this.identificador = id;
+    public void setImporte(Double importe) {
+        this.importe = importe;
     }
 
     
+      
+    
+    
+
 }

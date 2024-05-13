@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo.persistencia.JDBC;
 
 import java.sql.PreparedStatement;
@@ -14,7 +18,7 @@ import modelo.persistencia.FacturaDAO;
 
 /**
  *
- * @author IS2: Norberto Díaz-Díaz
+ * @author Norberto Díaz-Díaz
  */
 public class FacturaDAOJDBC implements FacturaDAO {
 

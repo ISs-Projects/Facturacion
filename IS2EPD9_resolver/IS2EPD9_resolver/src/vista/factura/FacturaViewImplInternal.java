@@ -1,3 +1,8 @@
+/*
+ * JPanelContacto.java
+ *
+ * Created on 27 de octubre de 2008, 14:25
+ */
 package vista.factura;
 
 import javax.swing.JInternalFrame;
@@ -13,7 +18,7 @@ public class FacturaViewImplInternal extends javax.swing.JPanel {
 
     private FacturaViewImpl view;
 
-    /** Creates new form JPanelCliente */
+    /** Creates new form JPanelContacto */
     public FacturaViewImplInternal(FacturaViewImpl view) {
         this.view=view;
         initComponents();

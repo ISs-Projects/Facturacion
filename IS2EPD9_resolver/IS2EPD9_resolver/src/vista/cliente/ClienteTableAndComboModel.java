@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vista.cliente;
 
 import java.util.ArrayList;
@@ -56,7 +60,7 @@ public class ClienteTableAndComboModel implements TableModel, ComboBoxModel {
     }
 
     public int getColumnCount() {
-        return 3; //ya que tendremos tres valores a mostrar por cliente
+        return 3; //ya que tendremos tres valores a mostrar por contacto
     }
 
     public String getColumnName(int columnIndex) {
@@ -76,7 +80,7 @@ public class ClienteTableAndComboModel implements TableModel, ComboBoxModel {
     }
 
     public Class<?> getColumnClass(int columnIndex) {
-        return String.class; //Todos los valores de cliente son un String
+        return String.class; //Todos los valores de contacto son un String
     }
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -84,17 +88,17 @@ public class ClienteTableAndComboModel implements TableModel, ComboBoxModel {
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Cliente cliente = clientes.get(rowIndex);
+        Cliente contacto = clientes.get(rowIndex);
         String value = null;
         switch (columnIndex) {
             case 0:
-                value = cliente.getDNI();
+                value = contacto.getDNI();
                 break;
             case 1:
-                value = cliente.getNombre();
+                value = contacto.getNombre();
                 break;
             case 2:
-                value = cliente.getDireccion();
+                value = contacto.getDireccion();
                 break;
         }
         return value;

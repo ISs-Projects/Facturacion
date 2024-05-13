@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vista.factura;
 
 import java.util.ArrayList;
@@ -15,6 +19,7 @@ public class FacturaTableModel implements TableModel{
 
     private List<Factura> facturas = new ArrayList<Factura>();
     private List<TableModelListener> tableListeners = new ArrayList<TableModelListener>();
+    private static final int IVA = 10;
 
     public List<Factura> getFacturas() {
         return facturas;
@@ -39,7 +44,7 @@ public class FacturaTableModel implements TableModel{
     }
 
     public int getColumnCount() {
-        return 3; //ya que tendremos tres valores a mostrar por cliente
+        return 3; //ya que tendremos tres valores a mostrar por contacto
     }
 
     public String getColumnName(int columnIndex) {
@@ -54,6 +59,7 @@ public class FacturaTableModel implements TableModel{
             case 2:
                 name = "Importe";
                 break;
+            
         }
         return name;
     }
@@ -109,7 +115,7 @@ public class FacturaTableModel implements TableModel{
     }
 
     protected void fireContentsChangedTableModel() {
-        
+         
         TableModelEvent event = new TableModelEvent(this, 0, this.getRowCount() - 1, TableModelEvent.ALL_COLUMNS, TableModelEvent.INSERT);
         for (TableModelListener listener : tableListeners) {
             listener.tableChanged(event);

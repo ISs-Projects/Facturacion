@@ -1,18 +1,18 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package vista.cliente;
 
+import vista.*;
 import controlador.ClienteController;
-
+import modelo.ClienteModel;
 
 
 /**
  *
  * @author Norberto Díaz-Díaz
  */
-public interface ClienteView {
-   
-    public ClienteController getController();
-    public void setController(ClienteController cc);
-    
-    public void dataModelChanged();
-    public void display();
+public interface ClienteView extends View<ClienteController>{
 }

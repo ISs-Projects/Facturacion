@@ -1,6 +1,11 @@
+    /*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package controlador;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import modelo.FacturaModel;
 import modelo.entidades.Cliente;
@@ -10,94 +15,34 @@ import vista.factura.FacturaView;
 
 /**
  *
- * @author IS2: Norberto Díaz-Díaz, Roberto Ruiz
+ * @author Norberto Díaz-Díaz
  */
-public class FacturaControllerImpl implements FacturaController {
-
-    private FacturaModel model;
-    
-    private List<FacturaView> views;
-
-    public FacturaControllerImpl() {
-        this.views = new ArrayList<FacturaView>();
-    }
-            
-    @Override
-    public void setup(FacturaModel model, List<FacturaView> views) {
-        this.model = model;
-        model.setController(this);
-        addViews(views);
-    }
-
-    @Override
-    public void start() {
-        for (FacturaView f: this.views) {
-            f.display();
-        }
-    }
-
-    private void addViews(List<FacturaView> views) {
-        for (FacturaView f: views) {
-            this.addView(f);
-        }
-    }
+public class FacturaControllerImpl extends AbstractControllerImpl<FacturaModel, FacturaView, Serializable> implements FacturaController{
     
     @Override
-    public void addView(FacturaView view) {
-        this.views.add(view);
-        view.setController(this);
+    protected Factura generaEntidad(List<Serializable> datos){
+        String identificador=(String)datos.get(0);
+        Cliente cliente=(Cliente)datos.get(1);
+        Double importe=new Double((String)datos.get(2));
+        Factura f=new FacturaImpl(identificador,cliente);
+        f.setImporte(importe);
+        
+        return f;
+
+    }
+    @Override
+    protected Factura generaEntidad(Serializable pk){
+        return new FacturaImpl((String)pk);
     }
 
     @Override
-    public void removeView(FacturaView view) {
-        this.views.remove(view);
+    public List<Factura> listaFacturaEntidadGesture() {
+        return getModel().listar();
     }
 
     @Override
-    public FacturaModel getModel() {
-        return this.model;
+    public List<Factura> listarFacuraEntidadPorClienteGesture(String nombre) {
+        return getModel().listarPorCliente(nombre);
     }
 
-    @Override
-    public void setModel(FacturaModel model) {
-        this.model = model;
-    }
-
-    @Override
-    public void nuevaFacturaGesture(String id, Cliente cliente, String importe) {
-        Factura factura = new FacturaImpl(id, cliente, new Double((String)importe));
-        this.model.nuevaFactura(factura);
-    }
-
-    @Override
-    public void borraFacturaGesture(String id) {
-        Factura factura = new FacturaImpl(id);
-        this.model.eliminarFactura(factura);
-    }
-
-    @Override
-    public void actualizaFacturaGesture(String id, Cliente cliente, String importe) {
-        Factura factura = new FacturaImpl(id, cliente, new Double((String)importe));
-        this.model.actualizarFactura(factura);
-    }
-    
-    @Override
-    public List<Factura> listaFacturasGesture() {
-        return this.model.obtenerFacturas();
-    }
-
-    @Override
-    public List<Factura> listaFacturasPorClienteGesture(String id) {
-        return this.model.listarPorCliente(id);
-    }
-
-
-    @Override
-    public void fireDataModelChanged() {
-        for (FacturaView f: this.views) {
-            f.display();
-        }
-    }
-
-  
 }

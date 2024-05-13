@@ -1,5 +1,5 @@
 /*
- * JPanelCliente.java
+ * JPanelContacto.java
  *
  * Created on 27 de octubre de 2008, 14:25
  */
@@ -17,7 +17,7 @@ public class ClienteViewImplInternal extends javax.swing.JPanel {
 
     private ClienteViewImpl view;
 
-    /** Creates new form JPanelCliente */
+    /** Creates new form JPanelContacto */
     public ClienteViewImplInternal(ClienteViewImpl view) {
         initComponents();
         this.view=view;
@@ -125,19 +125,34 @@ public class ClienteViewImplInternal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-
+// TODO add your handling code here:
+    try {
+        view.fireNuevoClienteGesture(this.jTextFieldDNI.getText(), this.jTextFieldNombre.getText(), this.jTextFieldDireccion.getText());
+    } catch (RuntimeException e) {
+        javax.swing.JOptionPane.showMessageDialog(new JInternalFrame(), e, "Warning", JOptionPane.WARNING_MESSAGE);
+    }
 
 
 }//GEN-LAST:event_jButtonAddActionPerformed
 
 private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-
+// TODO add your handling code here:
+    try {
+        view.fireActualizaClienteGesture(this.jTextFieldDNI.getText(), this.jTextFieldNombre.getText(), this.jTextFieldDireccion.getText());
+    } catch (RuntimeException e) {
+        javax.swing.JOptionPane.showMessageDialog(new JInternalFrame(), e, "Warning", JOptionPane.WARNING_MESSAGE);
+    }
 
 
 }//GEN-LAST:event_jButtonUpdateActionPerformed
 
 private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
-
+// TODO add your handling code here:
+    try {
+        view.fireBorraClienteGesture(this.jTextFieldDNI.getText());
+    } catch (RuntimeException e) {
+        javax.swing.JOptionPane.showMessageDialog(new JInternalFrame(), e, "Warning", JOptionPane.WARNING_MESSAGE);
+    }
 
 }//GEN-LAST:event_jButtonRemoveActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -153,7 +168,7 @@ private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 
-    public void setCliente(Cliente cliente) {
+    public void setContacto(Cliente cliente) {
         this.jTextFieldDNI.setText(cliente.getDNI());
         this.jTextFieldNombre.setText(cliente.getNombre());
         this.jTextFieldDireccion.setText(cliente.getDireccion());

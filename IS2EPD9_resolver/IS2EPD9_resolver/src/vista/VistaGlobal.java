@@ -1,4 +1,9 @@
 /*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
  * VistaGlobal.java
  *
  * Created on 23-nov-2009, 11:03:25

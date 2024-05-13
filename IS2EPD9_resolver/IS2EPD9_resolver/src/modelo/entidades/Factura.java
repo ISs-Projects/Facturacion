@@ -1,18 +1,24 @@
-package modelo.entidades;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-import java.io.Serializable;
+package modelo.entidades;
 
 /**
  *
- * @author IS2: Norberto Díaz-Díaz
+ * @author Norberto Díaz-Díaz
  */
-public interface Factura extends Serializable{
-    
-    public String getIdentificador();
-    public Cliente getCliente();
-    public Double getImporte();
-    
-    public void setIdentificador(String id);
-    //void setCliente(Cliente cl);
-    //void setImporte(Double im);
+public interface Factura extends Entidad{
+
+    Cliente getCliente();
+
+    String getIdentificador();
+
+    Double getImporte();
+
+    void setImporte(Double importe);
+
+
+
 }

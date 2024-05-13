@@ -1,16 +1,27 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * ClienteViewImpl.java
+ *
+ * Created on 23-nov-2009, 9:47:30
+ */
 package vista.cliente;
 
+import vista.AbstractViewImpl;
 import controlador.ClienteController;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.entidades.Cliente;
+import modelo.ClienteModel;
 
 /**
  *
  * @author Norberto Díaz-Díaz
  */
-public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
-
-    //Atributos del MVC
-     private ClienteController controller;
+public class ClienteViewImpl extends AbstractViewImpl<ClienteController> implements ClienteView {
 
     //Atributos propios de Swing
     private ClienteTableAndComboModel tableModel;
@@ -18,7 +29,12 @@ public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
 
     /** Creates new form ClienteViewImpl */
     public ClienteViewImpl() {
+        //tableModel = new ClienteTableAndComboModel();
+        tableModel = ClienteTableAndComboModel.create();
+        initComponents();
 
+        this.panelCliente = new ClienteViewImplInternal(this);
+        this.jPanelCliente.add(this.panelCliente);
     }
 
     /** This method is called from within the constructor to
@@ -68,7 +84,9 @@ public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClientesMouseClicked
-
+        ClienteTableAndComboModel ctm = (ClienteTableAndComboModel) this.jTableClientes.getModel();
+        Cliente contacto = ctm.getRow(this.jTableClientes.getSelectedRow());
+        panelCliente.setContacto(contacto);
     }//GEN-LAST:event_jTableClientesMouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelCliente;
@@ -76,15 +94,27 @@ public class ClienteViewImpl extends javax.swing.JPanel implements ClienteView {
     private javax.swing.JTable jTableClientes;
     // End of variables declaration//GEN-END:variables
 
+    public void refresh() {
+        tableModel.setClientes(getController().listaClienteEntidadGesture());//cambia el modelo de JTable(TableModel) por medio de una clase que hemos creado (ContactosTableModel)
+    }
 
+    protected void fireNuevoClienteGesture(String DNI, String nombre, String direccion) {
+        List<String> datos = new ArrayList<String>();
+        datos.add(DNI);
+        datos.add(nombre);
+        datos.add(direccion);
+        getController().nuevaEntidadGesture(datos);
+    }
 
-    public void display(){
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                setVisible(true);
-                dataModelChanged();
-            }
-        });
+    protected void fireActualizaClienteGesture(String DNI, String nombre, String direccion) {
+        List<String> datos = new ArrayList<String>();
+        datos.add(DNI);
+        datos.add(nombre);
+        datos.add(direccion);
+        getController().actualizaEntidadGesture(datos);        
+    }
 
+    protected void fireBorraClienteGesture(String nombre) {
+        getController().borraEntidadGesture(nombre);
     }
 }
