@@ -10,5 +10,28 @@
             <file>file:/Users/davgutavi/Documents/netbeans_workspace/IS2EPD9/src/modelo/persistencia/ClienteDAO.java</file>
             <file>file:/Users/davgutavi/Documents/netbeans_workspace/IS2EPD9/src/modelo/FacturaModel.java</file>
         </group>
+        <group>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/controlador/ClienteControllerImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/ClienteModel.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/entidades/Cliente.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/entidades/ClienteImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/controlador/AbstractControllerImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/persistencia/GenericDAO.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/ClienteModelImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/persistencia/JDBC/FacturaDAOJDBC.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/AbstractModelImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/FacturaModelImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/is2epd9/EntryPoint.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/config/ConfigDatabase.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/config/ConfigService.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/config.properties</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/persistencia/JDBC/Persistencia.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/persistencia/JDBC/ClienteDAOJDBC.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/nbproject/project.properties</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/persistencia/ClienteDAO.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/controlador/FacturaControllerImpl.java</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/config-mac.properties</file>
+            <file>file:/Users/mamisho/desarrollo/universidad/segundo/Facturacion/IS2EPD9_resolver/IS2EPD9_resolver/src/modelo/Model.java</file>
+        </group>
     </open-files>
 </project-private>

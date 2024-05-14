@@ -17,10 +17,21 @@ import modelo.persistencia.JDBC.FacturaDAOJDBC;
  * @author Norberto Díaz-Díaz
  */
 public class FacturaModelImpl extends AbstractModelImpl<FacturaController,Factura,String> implements FacturaModel{
+    
+    // private final GenericDAO clienteDao;
+    private final FacturaDAO facturaDao;
+    
+    public FacturaModelImpl(
+            FacturaDAO facturaDao
+    ) {
+        // this.clienteDao = clienteDao;
+        this.facturaDao = facturaDao;
+    }
 
     protected GenericDAO obtenerImplementacionDAO(){
-        return new FacturaDAOJDBC();
+        // return new FacturaDAOJDBC();
         //return new FacturaDAOJPA();
+        return facturaDao;
     }
 
     public List<Factura> listarPorCliente(String nombre) {

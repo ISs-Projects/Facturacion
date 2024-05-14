@@ -1,5 +1,6 @@
 package is2epd9;
 
+import config.ConfigService;
 import controlador.ClienteController;
 import controlador.ClienteControllerImpl;
 import controlador.FacturaController;
@@ -10,6 +11,12 @@ import modelo.ClienteModel;
 import modelo.ClienteModelImpl;
 import modelo.FacturaModel;
 import modelo.FacturaModelImpl;
+import modelo.persistencia.ClienteDAO;
+import modelo.persistencia.FacturaDAO;
+import modelo.persistencia.GenericDAO;
+import modelo.persistencia.JDBC.ClienteDAOJDBC;
+import modelo.persistencia.JDBC.FacturaDAOJDBC;
+import modelo.persistencia.JDBC.Persistencia;
 import vista.VistaGlobal;
 import vista.cliente.ClienteView;
 import vista.cliente.ClienteViewImpl;
@@ -21,8 +28,16 @@ public class EntryPoint {
 
     public static void main(String[] args) {
         
-          //Cliente
-        ClienteModel clienteModel = new ClienteModelImpl();
+        // Construyo dependencias
+        ConfigService configService = ConfigService.getInstance();
+        Persistencia persistencia = new Persistencia(configService);
+        
+        ClienteDAO clienteDaoDatabase = new ClienteDAOJDBC(persistencia);
+        FacturaDAO facturaDaoDatabase = new FacturaDAOJDBC(persistencia, clienteDaoDatabase);
+        
+        //Cliente
+        ClienteModel clienteModel = new ClienteModelImpl(clienteDaoDatabase);
+        FacturaModel facturaModel = new FacturaModelImpl(facturaDaoDatabase);
 
         
         ClienteView clienteView1 =new ClienteViewImpl();
@@ -36,7 +51,7 @@ public class EntryPoint {
 
 
         //Factura
-        FacturaModel facturaModel = new FacturaModelImpl();
+        // FacturaModel facturaModel = new FacturaModelImpl(facturaDaoDatabase);
 
 
         FacturaView facturaView1 =new FacturaViewImpl();

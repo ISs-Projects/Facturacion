@@ -9,21 +9,28 @@
 
 package modelo.persistencia.JDBC;
 
+import config.ConfigService;
 import java.sql.*;
 /**
  *
  * @author Norberto D�az-D�az
  */
 public class Persistencia {
+    
+    private final ConfigService configService;
+    
+    public Persistencia(ConfigService configService) {
+        this.configService = configService;
+    }
         // XAMPP
-    private static String login = "david";
-    private static String password = "david";
+    // private static String login = "david";
+    // private static String password = "david";
 //    
     // COMMUNITY
 //    private static String login = "root";
 //    private static String password = "root1234";
 
-    private static String url = "jdbc:mysql://localhost:3306/facturacion?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC";
+    // private static String url = "jdbc:mysql://localhost:3306/facturacion?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC";
     
     private static Connection conexion=null;
     
@@ -31,13 +38,17 @@ public class Persistencia {
      * La apertura de la conexi�n es implementada seg�n el patr�n singleton
      * De esta forma, a lo sumo, tendremos una s�la conexi�n abierta en la aplicaci�n
      */
-    public static Connection createConnection(){
+    public Connection getConnection(){
         if (conexion==null){
             try{
-//                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                // Class.forName("com.mysql.jdbc.Driver").newInstance();
                 
                 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-                conexion=DriverManager.getConnection(url,login,password);
+                conexion=DriverManager.getConnection(
+                        configService.getDBConfig().getConnString(),
+                        configService.getDBConfig().getUser(),
+                        configService.getDBConfig().getPassword()
+                );
             }catch(ClassNotFoundException e){System.out.println(e);
             }catch(SQLException e){System.out.println(e);
             }catch(java.lang.InstantiationException e){System.out.println(e);

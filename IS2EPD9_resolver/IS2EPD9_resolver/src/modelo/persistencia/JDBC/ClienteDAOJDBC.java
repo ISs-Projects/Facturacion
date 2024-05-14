@@ -17,12 +17,18 @@ import modelo.persistencia.ClienteDAO;
  * @author Norberto Díaz-Díaz
  */
 public class ClienteDAOJDBC implements ClienteDAO {
+    
+    private final Persistencia persistencia;
+    
+    public ClienteDAOJDBC(Persistencia persistencia) {
+        this.persistencia = persistencia;
+    }
 
     public void create(Cliente entidad) {
 
         String sql = "insert into clientes(dni,nombre,direccion) values (?,?,?)";
         try {
-            PreparedStatement stm = Persistencia.createConnection().prepareStatement(sql);
+            PreparedStatement stm = persistencia.getConnection().prepareStatement(sql);
             stm.setString(1, entidad.getDNI());
             stm.setString(2, entidad.getNombre());
             stm.setString(3, entidad.getDireccion());
@@ -32,14 +38,14 @@ public class ClienteDAOJDBC implements ClienteDAO {
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            Persistencia.closeConnection();
+            persistencia.closeConnection();
         }
     }
 
     public Cliente read(String pk) {
         Cliente c = null;
         try {
-            Statement stmt = Persistencia.createConnection().createStatement();
+            Statement stmt = persistencia.getConnection().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM clientes where DNI=" + pk);
             String dni, nombre, direccion;
             if (res.next()) {
@@ -52,7 +58,7 @@ public class ClienteDAOJDBC implements ClienteDAO {
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            Persistencia.closeConnection();
+            persistencia.closeConnection();
         }
         return c;
     }
@@ -60,7 +66,7 @@ public class ClienteDAOJDBC implements ClienteDAO {
     public void update(Cliente entidad) {
         String sql = "update clientes set nombre=?, direccion=? where DNI like ?";
         try {
-            PreparedStatement stm = Persistencia.createConnection().prepareStatement(sql);
+            PreparedStatement stm = persistencia.getConnection().prepareStatement(sql);
             stm.setString(1, entidad.getNombre());
             stm.setString(2, entidad.getDireccion());
             stm.setString(3, entidad.getDNI());
@@ -70,13 +76,13 @@ public class ClienteDAOJDBC implements ClienteDAO {
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            Persistencia.closeConnection();
+            persistencia.closeConnection();
         }
     }
 
     public void delete(Cliente entidad) {
         try {
-            Statement stmt = Persistencia.createConnection().createStatement();
+            Statement stmt = persistencia.getConnection().createStatement();
             stmt.executeUpdate("DELETE FROM clientes where DNI=" + entidad.getDNI());
 
 
@@ -84,7 +90,7 @@ public class ClienteDAOJDBC implements ClienteDAO {
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            Persistencia.closeConnection();
+            persistencia.closeConnection();
         }
     }
 
@@ -92,7 +98,7 @@ public class ClienteDAOJDBC implements ClienteDAO {
         List<Cliente> contactos = new ArrayList<Cliente>();
 
         try {
-            Statement stmt = Persistencia.createConnection().createStatement();
+            Statement stmt = persistencia.getConnection().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM clientes ");
             String dni, nombre, direccion;
             while (res.next()) {
@@ -106,7 +112,7 @@ public class ClienteDAOJDBC implements ClienteDAO {
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            Persistencia.closeConnection();
+            persistencia.closeConnection();
         }
         return contactos;
     }

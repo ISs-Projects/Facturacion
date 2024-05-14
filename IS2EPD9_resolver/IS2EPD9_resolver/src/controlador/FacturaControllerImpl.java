@@ -23,7 +23,8 @@ public class FacturaControllerImpl extends AbstractControllerImpl<FacturaModel, 
     protected Factura generaEntidad(List<Serializable> datos){
         String identificador=(String)datos.get(0);
         Cliente cliente=(Cliente)datos.get(1);
-        Double importe=new Double((String)datos.get(2));
+        // Double importe=new Double((String)datos.get(2));
+        Double importe = Double.valueOf((String)datos.get(2));
         Factura f=new FacturaImpl(identificador,cliente);
         f.setImporte(importe);
         

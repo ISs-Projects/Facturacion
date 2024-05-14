@@ -1,0 +1,49 @@
+# Archivos generados por el IDE
+# (Ajusta esto según tu IDE específico)
+#
+target/
+build/
+dist/
+.idea/
+.project
+.classpath
+local.properties
+nbproject/
+
+# Archivos binarios
+# (Excluyendo los jars dentro del directorio lib)
+*.class
+
+
+# Excluye jars dentro del directorio lib
+
+
+
+# Directorios de logs
+logs/
+
+# Archivos temporales
+tmp/
+
+# Archivos de configuración local
+config/local*.properties
+
+# Archivos de base de datos
+# (Ajusta esto según tu base de datos)
+db/
+
+# Archivos de documentación
+doc/
+javadoc/
+
+# Archivos de prueba
+test/
+
+# Archivos de terceros
+lib/thirdparty/*
+
+# Directorios Maven
+.m2/
+
+# Archivos Intellij IDEA
+*.iml
